@@ -9,7 +9,7 @@ import {AppRouting} from './app-routing';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginRegisterComponent } from './login-register/login-register.component';
-import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
