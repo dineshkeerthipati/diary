@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-lg-3">
+    <!--<mat-form-field>
+      <mat-label>Chart Type</mat-label>
+      <mat-select aria-label="chart type" placeholder="Chart Type" #chartType
+                  (selectionChange)="onChartChange(chartType.value)">
+        <mat-option *ngFor="let chart of chartTypes" [value]="chart.shortVal"
+        >{{chart.longVal}}</mat-option>
+      </mat-select>
+    </mat-form-field>-->
+    <mat-form-field>
+      <mat-label>Choose category for the chart</mat-label>
+      <mat-select aria-label="category" placeholder="Category" #chartCat
+                  (selectionChange)="onChartChange(chartCat.value)" class="fullWidth">
+        <mat-option *ngFor="let chart of chartCategories" [value]="chart.shortVal"
+        >{{chart.longVal}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-lg-6">
+    <canvas baseChart #bsChart width="400" height="250"
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [colors]="chartColors"
+            [legend]="chartLegend"
+            [chartType]="chhartType"
+            [plugins]="chartPlugins">
+    </canvas>
+  </div>
+  <div class="col-lg-3"></div>
+</div>
+<br>
+<!--<div class="row" id="map">
+  <mat-header-row>Map</mat-header-row>
+  <app-map></app-map>
+</div>-->

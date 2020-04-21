@@ -1,0 +1,22 @@
+#sidenavContainer {
+  margin-top: 64px;
+}
+
+#sidenav {
+  width: 240px;
+}
+
+#sidenav .menu-item {
+  width: 100%;
+  border-radius: 0;
+  text-align: left;
+  padding: 10px;
+}
+
+#sidenav .menu-item:hover {
+  background: #eee;
+}
+
+agm-map {
+  height: 300px;
+}

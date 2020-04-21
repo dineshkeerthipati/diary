@@ -1,0 +1,96 @@
+<h2 mat-dialog-title>Add expense
+  <button mat-raised-button color="warn" id="topClose" [mat-dialog-close]="false" type="button" class="close"
+          aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</h2>
+<div mat-dialog-content>
+  <form [formGroup]="expenseForm" autocomplete="off">
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-select placeholder="Card" formControlName="card" required>
+              <mat-option value="">Select</mat-option>
+              <!--<mat-option value="BOA">Bank of America</mat-option>-->
+              <mat-option *ngFor="let lkp of cardLookups;" [value]="lkp.shortVal">{{lkp.longVal}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="expenseForm.get('card').invalid &&
+            (expenseForm.get('card').touched || expenseForm.get('card').dirty)">must select Card
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <!--<input type="text" matInput placeholder="Amount" formControlName="amount" required
+                   min="1" max="1000" (keypress)="validateNumberOnly($event)">-->
+            <input matInput placeholder="Amount" formControlName="amount" required
+                   currencyMask [options]="{ allowNegative: false, prefix: '$', hundreds: ','}" maxlength="14" (keypress)="validateNumberOnly($event)">
+            <mat-error *ngIf="expenseForm.get('amount').invalid &&
+            (expenseForm.get('amount').touched || expenseForm.get('amount').dirty)">must select Card
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-select placeholder="Purchase type" formControlName="purchaseType" required>
+              <mat-option value="">Select</mat-option>
+              <!--<mat-option value="CT">Citi</mat-option>-->
+              <mat-option *ngFor="let lkp of purchaseLookups;" [value]="lkp.shortVal">{{lkp.longVal}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="expenseForm.get('purchaseType').invalid &&
+            (expenseForm.get('purchaseType').touched || expenseForm.get('purchaseType').dirty)">must select Card
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <textarea matInput placeholder="Enter shopping summary here" formControlName="summary"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Address</mat-panel-title>
+            <mat-panel-description>Enter the address of purchased location(optional)</mat-panel-description>
+          </mat-expansion-panel-header>
+            <div formGroupName="address">
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <input matInput placeholder="Address Line1" formControlName="addressLine1">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <mat-select placeholder="State" formControlName="state">
+                      <mat-option value="">Select</mat-option>
+                      <mat-option *ngFor="let state of states;" [value]="state.shortVal">{{state.longVal}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                  <mat-form-field>
+                    <input matInput formControlName="zipCode" (keypress)="validateNumberOnly($event)"
+                           minlength="5" maxlength="5">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </form>
+</div>
+<div class="modal-footer">
+    <button class="mr-auto" mat-raised-button color="warn" [mat-dialog-close]="false">discard</button>
+    <button mat-raised-button color="primary" [disabled]="expenseForm.invalid"
+            [mat-dialog-close]="expenseForm.value" (click)="save()">
+      <i class="material-icons">save</i>Save & Close
+    </button>
+</div>

@@ -1,0 +1,8 @@
+.tr-hover:hover {
+  background-color: darkgray;
+  left: .3em;
+}
+
+.hand {
+  cursor: pointer;
+}

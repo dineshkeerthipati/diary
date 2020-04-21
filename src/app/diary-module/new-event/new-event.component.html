@@ -1,0 +1,52 @@
+<!--<div class="container">
+  <h4>User name here</h4>
+  <form [formGroup]="eventForm" (ngSubmit)="onSave()">
+    <div class="row">
+      <div class="col-sm-1">
+        <mat-form-field>
+          <input matInput [matDatepicker]="evntDt" placeholder="Event Date" [max]="maxDate" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="evntDt"></mat-datepicker-toggle>
+          <mat-datepicker #evntDt></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Subject" formControlName="subject">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="fullWidth">
+          <textarea matInput placeholder="Content" formControlName="content"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <mat-form-field class="fullWidth">
+          <mat-select placeholder="Privacy" formControlName="privacy">
+            <mat-option value="">&#45;&#45;None&#45;&#45;</mat-option>
+            <mat-option value="PB">Public</mat-option>
+            <mat-option value="PR">Private</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button class="btn btn-secondary" type="button" (click)="onReset()">Reset</button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary" type="submit" [disabled]="!eventForm.valid">
+          {{event != undefined ? 'Update': 'Submit'}}</button>
+      </div>
+    </div>
+  </form>
+</div>
+<hr>-->
+<div class="container-fluid">
+  <app-all-events (selectedEvent)="loadForm($event)"></app-all-events>
+</div>

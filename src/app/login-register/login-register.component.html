@@ -1,0 +1,19 @@
+<form [formGroup]="loginRegForm" autocomplete="off" (ngSubmit)="submitForm()">
+  <div class="row">
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email" formControlName="email">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" formControlName="password">
+    </mat-form-field>
+  </div>
+  <div class="row" *ngIf="btnName==='Register'">
+    <mat-form-field>
+      <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+    </mat-form-field>
+  </div>
+  <button (click)="onTestLogin()">test_login</button>
+  <button type="submit" mat-raised-button [disabled]="!loginRegForm.valid">{{btnName}}</button>
+</form>
